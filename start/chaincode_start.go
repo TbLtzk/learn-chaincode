@@ -47,10 +47,12 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println("deployment succeeded: hello_world field initialized with value " + args[0])
 
 	return nil, nil
 }
 
+// Invoke is our entry point for modifications
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	fmt.Println("invoke is running " + function)
 
@@ -70,10 +72,10 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 	fmt.Println("query is running " + function)
 
 	// Handle different functions
-	if function == "read" { //read a variable
+	if function == "read" {
 		return t.read(stub, args)
 	}
-	fmt.Println("query did not find func: " + function)
+	fmt.Println("query did not find func: '" + function + "'")
 
 	return nil, errors.New("Received unknown function query: " + function)
 }
