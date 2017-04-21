@@ -115,7 +115,7 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
 	}
 
 	var bytesLength = len(valAsbytes)
-	fmt.Println("%v bytes read!", bytesLength)
+	fmt.Println(bytesLength, " bytes read!")
 	var val string
 	val = string(valAsbytes)
 	fmt.Println("value is " + val)
